@@ -13,8 +13,18 @@ import java.util.List;
  */
 public interface UserService {
 
-
+     /**
+      * @author: zhouzhe
+      * @param:
+      * @className: UserService
+      * @package: cn.liontalk.service
+      * @describe:
+      * @return:
+      * @date: 2018/3/25 21:00
+      **/
      List<User> findUserInfo();
+
+
      int addUserInfo(User user);
      int delUserInfo(int id);
 
