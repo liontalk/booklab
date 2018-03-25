@@ -37,10 +37,8 @@ public class UserController {
 
     @RequestMapping(value="/delete")
     public String deleteUser(ModelMap modelMap){
-        List<User> list = userService.findUserInfo();
-        if(list!=null&& list.size()>0){
-            modelMap.put("user",list.get(0));
-        }
+        int result  = userService.delUserInfo(1);
+        modelMap.put("result",result);
         return "user";
     }
 
