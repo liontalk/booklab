@@ -2,6 +2,7 @@ package cn.liontalk.controller;
 
 import cn.liontalk.entity.user.User;
 import cn.liontalk.service.UserService;
+import cn.liontalk.util.plugins.PageView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 /**
  * @author: 周哲
  * @package: cn.liontalk.controller
@@ -30,11 +32,13 @@ public class UserController {
 
 
     @RequestMapping(value="/query")
-    public String test(ModelMap modelMap){
+    public String test(ModelMap modelMap, PageView pageView){
         logger.info("查询个人用户数据！");
-        List<User> list = userService.findUserInfo();
-        if(list!=null&& list.size()>0){
-            modelMap.put("user",list.get(0));
+        Map<String,Object> map = new HashMap<>();
+        map.put("pageView",pageView);
+        List<User> pageList = userService.findUserInfo(map);
+        if(pageList!=null&& pageList.size()>0){
+            modelMap.put("user",pageList.get(0));
         }
         return "user";
     }

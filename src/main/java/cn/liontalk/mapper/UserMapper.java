@@ -4,7 +4,7 @@ import cn.liontalk.entity.user.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-
+import java.util.Map;
 /**
  * @author: 周哲
  * @package: cn.liontalk.mapper
@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Mapper
 public interface UserMapper {
-     List<User> findUserInfo();
+     List<User> findUserInfo(Map<String,Object> map);
      int addUserInfo(User user);
      int delUserInfo(int id);
 }

@@ -178,34 +178,5 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-
-
-		<!--<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-				</plugin>
-				&lt;!&ndash;spring-boot为了保护application.yml和application.properties，修改了默认的占位符${...}为@...@&ndash;&gt;
-				&lt;!&ndash;为了spring boot的yml和properties文件能够使用maven变量替换,使用${}占位符&ndash;&gt;
-				<plugin>
-
-
-
-
-
-
-																							<artifactId>maven-resources-plugin</artifactId>
-					<configuration>
-						<encoding>utf-8</encoding>
-						<useDefaultDelimiters>true</useDefaultDelimiters>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>-->
-
-
 	</build>
-
-
 </project>

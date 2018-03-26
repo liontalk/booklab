@@ -3,11 +3,12 @@ package cn.liontalk.service.impl;
 import cn.liontalk.entity.user.User;
 import cn.liontalk.mapper.UserMapper;
 import cn.liontalk.service.UserService;
+import cn.liontalk.util.plugins.PageView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+import java.util.Map;
 /**
  * @author: 周哲
  * @package: cn.liontalk.service.impl
@@ -24,8 +25,9 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<User> findUserInfo() {
-        return userMapper.findUserInfo();
+    public List<User> findUserInfo(Map<String,Object> map) {
+
+        return userMapper.findUserInfo(map);
     }
 
     @Override

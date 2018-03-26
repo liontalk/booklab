@@ -1,9 +1,10 @@
 package cn.liontalk.service;
 
 import cn.liontalk.entity.user.User;
+import cn.liontalk.util.plugins.PageView;
 
 import java.util.List;
-
+import java.util.Map;
 /**
  * @author: 周哲
  * @package: cn.liontalk.service
@@ -22,7 +23,7 @@ public interface UserService {
       * @return:
       * @date: 2018/3/25 21:00
       **/
-     List<User> findUserInfo();
+     List<User> findUserInfo(Map<String,Object> map);
 
 
      int addUserInfo(User user);
