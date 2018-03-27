@@ -40,7 +40,7 @@ public class UserController {
         if(pageList!=null&& pageList.size()>0){
             modelMap.put("user",pageList.get(0));
         }
-        return "user";
+        return "user/user";
     }
 
 
@@ -49,6 +49,14 @@ public class UserController {
         int result  = userService.delUserInfo(1);
         modelMap.put("result",result);
         return "user";
+    }
+
+
+
+    @RequestMapping(value = "/error")
+    public String toError(){
+
+        return "error/500";
     }
 
 

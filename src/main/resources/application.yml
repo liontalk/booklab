@@ -3,6 +3,9 @@ spring:
     cache: true
   profiles:
     active: prod
+  mvc:
+    #static-path-pattern:  classpath:/resources/static/**
+   static-path-pattern: /static/**
 mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml
   type-aliases-package: cn.liontalk.entity
