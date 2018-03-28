@@ -1,12 +1,86 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>用户列表</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link th:href="@{/static/css/bootstrap.min.css?v=3.3.6}" rel="stylesheet">
+    <link th:href="@{/static/css/font-awesome.min.css?v=4.4.0}" rel="stylesheet">
+    <link th:href="@{/static/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/static/css/style.css?v=4.1.0}" rel="stylesheet">
+    <link th:href="@{/static/css/bootstrap-table.min.css}" rel="stylesheet">
 </head>
+
 <body>
-<h1>Hello World!</h1>
-<h1><p th:text="${user.name}"></h1>
-<h1>Hello World!</h1>
+<div class="row wrapper border-bottom  page-heading" id="breadHeading">
+    <ol class="breadcrumb">
+        <li>
+            <a href="/welcome">主页</a>
+        </li>
+        <li>
+            <strong>用户管理</strong>
+        </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/user/toList">用户列表</a>
+        </li>
+    </ol>
+</div>
+<input type="button" hidden id="refresh_btn" onclick="javascript:location.replace(location.href);">
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-info" id="exportUserData"><i class="fa fa-download">导出Excel</i></button>
+            <div class="text-center animated fadeInRightBig">
+                <table id="table"
+                       data-toggle="table"
+                       data-url="/user/list"
+                       data-striped="true"
+                       data-response-handler="responseHandler"
+                       data-data-field="rows"
+                       data-pagination="true"
+                       data-side-pagination="server"
+                       data-query-params="queryParams"
+                       data-toolbar="#toolbar">
+                    <thead>
+                    <tr>
+                        <th data-align="center" data-formatter="index">序号</th>
+                        <th data-align="center" data-field="nickname" >昵称</th>
+                        <th data-align="center" data-field="headImg" data-formatter="imgFormatter">头像</th>
+                        <th data-align="center" data-field="sex" data-formatter="sexFormatter">性别</th>
+                        <th data-align="center" data-field="province">省份</th>
+                        <th data-align="center" data-field="city">城市</th>
+                        <th data-align="center" data-field="money" data-formatter="moneyFormatter">现金红包</th>
+                        <th data-align="center" data-field="bigMoney" data-formatter="bigMoneyFormatter">大额红包</th>
+                        <th data-align="center" data-field="lotteryCount">抽奖次数</th>
+                        <th data-align="center" data-formatter="operatorFormatter">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{/static/js/bootstrap-table.min.js}"></script>
+<script th:src="@{/static/js/bootstrap-table-mobile.min.js}"></script>
+<script th:src="@{/static/js/bootstrap-table-zh-CN.min.js}"></script>
+
+
+<script>
+
+
+
+</script>
+
 </body>
+
 </html>
+
