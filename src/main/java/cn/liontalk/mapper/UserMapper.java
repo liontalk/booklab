@@ -17,4 +17,15 @@ public interface UserMapper {
      List<User> findUserInfo(Map<String,Object> map);
      int addUserInfo(User user);
      int delUserInfo(int id);
+
+     /**
+     * @author: zhouzhe
+     * @param:
+     * @className: UserMapper
+     * @package: cn.liontalk.mapper
+     * @describe: 查询用户列表
+     * @return:
+     * @date: 2018/3/28 22:21
+     **/
+     List<User> queryUserList();
 }

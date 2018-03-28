@@ -2,13 +2,18 @@ package cn.liontalk.controller;
 
 import cn.liontalk.entity.user.User;
 import cn.liontalk.service.UserService;
+import cn.liontalk.util.ajaxresult.AjaxResult;
+import cn.liontalk.util.exception.MyException;
 import cn.liontalk.util.plugins.PageView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -32,16 +37,24 @@ public class UserController {
     UserService userService;
 
 
-    @RequestMapping(value="/query")
-    public String test(ModelMap modelMap, PageView pageView){
-        logger.info("查询个人用户数据！");
-        Map<String,Object> map = new HashMap<>();
-        map.put("pageView",pageView);
-        List<User> pageList = userService.findUserInfo(map);
-        if(pageList!=null&& pageList.size()>0){
-            modelMap.put("user",pageList.get(0));
+    @RequestMapping(value="/list")
+    public String userListPage(){
+        return "user/list";
+    }
+
+    @RequestMapping(value="/queryUserList",method = RequestMethod.GET)
+    @ResponseBody
+    public AjaxResult queryUserList(){
+        AjaxResult ajaxResult = new AjaxResult(true);
+        try{
+            List<User> list = userService.queryUserList();
+
+
+        }catch (MyException e){
+            ajaxResult.setSuccess(false);
+            ajaxResult.setMessage(e.getMessage());
         }
-        return "user/user";
+        return ajaxResult;
     }
 
 

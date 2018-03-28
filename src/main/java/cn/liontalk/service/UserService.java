@@ -26,6 +26,17 @@ public interface UserService {
      List<User> findUserInfo(Map<String,Object> map);
 
 
+     /**
+     * @author: zhouzhe
+     * @param:
+     * @className: UserService
+     * @package: cn.liontalk.service
+     * @describe: 查询用户列表
+     * @return:
+     * @date: 2018/3/28 22:20
+     **/
+     List<User> queryUserList();
+
      int addUserInfo(User user);
      int delUserInfo(int id);
 

@@ -30,6 +30,20 @@ public class UserServiceImpl implements UserService {
         return userMapper.findUserInfo(map);
     }
 
+    /**
+     * @author: zhouzhe
+     * @param:
+     * @className: UserService
+     * @package: cn.liontalk.service
+     * @describe: 查询用户列表
+     * @return:
+     * @date: 2018/3/28 22:20
+     **/
+    @Override
+    public List <User> queryUserList() {
+        return userMapper.queryUserList();
+    }
+
     @Override
     public int addUserInfo(User user) {
         return userMapper.addUserInfo(user);
