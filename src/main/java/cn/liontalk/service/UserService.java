@@ -15,29 +15,45 @@ import java.util.Map;
 public interface UserService {
 
      /**
-      * @author: zhouzhe
-      * @param:
-      * @className: UserService
-      * @package: cn.liontalk.service
-      * @describe:
-      * @return:
-      * @date: 2018/3/25 21:00
-      **/
+     * 查询用户信息
+     * @param  map
+     * @param  map
+     * @param  map
+     * @return  List<User>
+     **/
      List<User> findUserInfo(Map<String,Object> map);
 
 
      /**
-     * @author: zhouzhe
-     * @param:
-     * @className: UserService
-     * @package: cn.liontalk.service
-     * @describe: 查询用户列表
-     * @return:
-     * @date: 2018/3/28 22:20
+     * 查询用户列表
+     *
+     * @param
+     * @param
+     * @param
+     * @return
      **/
      List<User> queryUserList();
 
+
+     /**
+     * 添加用户信息
+     *
+     * @param user
+     * @param user
+     * @param user
+     * @return
+     **/
      int addUserInfo(User user);
+
+
+     /**
+     * 删除用户信息
+
+     * @param  id
+     * @param  id
+     * @param  id
+     * @return
+     **/
      int delUserInfo(int id);
 
 }
