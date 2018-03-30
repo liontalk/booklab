@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.Map;
+
 /**
  * @author: 周哲
  * @package: cn.liontalk.mapper
@@ -14,18 +15,45 @@ import java.util.Map;
  */
 @Mapper
 public interface UserMapper {
-     List<User> findUserInfo(Map<String,Object> map);
-     int addUserInfo(User user);
-     int delUserInfo(int id);
 
-     /**
-     * @author: zhouzhe
-     * @param:
-     * @className: UserMapper
-     * @package: cn.liontalk.mapper
-     * @describe: 查询用户列表
-     * @return:
-     * @date: 2018/3/28 22:21
+
+    /**
+     * 查询用户信息
+     *
+     * @param map
+     * @param map
+     * @param map
+     * @return
      **/
-     List<User> queryUserList();
+    List <User> findUserInfo(Map <String, Object> map);
+
+
+    /**
+     * 添加用户信息
+     * @param user
+     * @param user
+     * @param
+     * @return
+     **/
+    Integer addUserInfo(User user);
+
+    /**
+    * 删除用户数据
+    * @param id
+    * @param id
+    * @param id
+    * @return
+    **/
+    int delUserInfo(int id);
+
+
+    /**
+    * 查询用户列表
+    * @param
+    * @param
+    * @param
+    * @return List <User>
+    **/
+    List <User> queryUserList();
+    
 }
