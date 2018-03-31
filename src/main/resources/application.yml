@@ -1,13 +1,39 @@
+
 spring:
   thymeleaf:
     cache: true
   profiles:
     active: prod
   mvc:
-    #static-path-pattern:  classpath:/resources/static/**
    static-path-pattern: /static/**
+
+
+#配置redis环境
+  redis:
+    #配置Redis默认索引为1
+    database: 1
+    #配置Redis服务器地址
+    host: 127.0.0.1
+    #配置Redis服务端口
+    port: 6379
+    password:
+    timeout: 0
+    jedis:
+      pool:
+        #连接池最大连接数
+        max-active: 1000
+        max-wait: -1
+        #连接池最大空闲链接
+        max-idle: 8
+        #连接池最小空闲链接
+        min-idle: 0
+
+#================配置MyBatis
 mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml
   type-aliases-package: cn.liontalk.entity
+
+#================配置log4j2日志文件
 logging:
  config: classpath:log4j2.xml
+
