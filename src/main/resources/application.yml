@@ -1,4 +1,3 @@
-
 spring:
   thymeleaf:
     cache: true
@@ -27,6 +26,13 @@ spring:
         max-idle: 8
         #连接池最小空闲链接
         min-idle: 0
+        #配置springboot 热部署
+  devtools:
+      restart:
+            enabled: true #热部署生效
+            #设置重启的目录
+            additional-paths: src/main/java
+            exclude: WEB-INF/** #classpath目录下的WEB-INF文件夹内容修改不重启
 
 #================配置MyBatis
 mybatis:
