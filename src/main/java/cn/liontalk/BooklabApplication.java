@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 /**
  * 开启定时任务
  */
-@EnableScheduling
+//@EnableScheduling
 //开启异步执行任务
 @EnableAsync
 public class BooklabApplication {
