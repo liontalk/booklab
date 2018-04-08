@@ -8,11 +8,14 @@ spring:
      initialSize: 5
      minIdle: 5
      maxActive: 20
-  thymeleaf:
-    cache: true
 
+  thymeleaf:
+     prefix: classpath:/templates/
+     cache: false
+     encoding: utf-8
+     mode: HTML5
   profiles:
-    active: prod
+    active: dev
 server:
   port: 8888
   servlet:
