@@ -39,7 +39,8 @@ public class UserController {
 
     @RequestMapping(value="/list")
     public String userListPage(){
-        return "user/list";
+        logger.info("跳转到用户列表。。");
+        return "user/userlist";
     }
 
     @RequestMapping(value="/queryUserList",method = RequestMethod.GET)
