@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/static/css/font-awesome.css?v=4.4.0}" rel="stylesheet">
+    <link th:href="@{/static/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/static/css/style.css}" rel="stylesheet">
+    <link th:href="@{/static/css/login.css}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <script>
+        if (window.top !== window.self) {
+            window.top.location = window.location;
+        }
+    </script>
+
+</head>
+<body class="signin">
+    <div class="signinpanel">
+        <div class="row">
+            <div class="col-sm-12">
+                <form th:method="post" id="loginForm" th:action="@{/admin/login}">
+                    <h4 class="no-margins">登&nbsp;&nbsp;录</h4>
+                    <input type="text" class="form-control uname" name="account" id="account" placeholder="请输入用户名或手机号码" />
+                    <input type="password" class="form-control pword m-b" name="password" id="password" placeholder="请输入登录密码" />
+                    <a th:href="@{/}">忘记密码了？</a>
+                    <button class="btn btn-success btn-block">登录</button>
+                </form>
+            </div>
+        </div>
+        <div class="signup-footer">
+            <div class="pull-left" style="margin-left: 26%">Copyright&copy;周小怪
+            </div>
+        </div>
+        <div class="pull-left" style="margin-left: 22%">
+                欢迎使用个人信息管理平台
+        </div>
+
+    </div>
+<script th:src="@{/static/js/jquery.min.js}"></script>
+</body>
+</html>

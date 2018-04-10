@@ -1,6 +1,9 @@
 package cn.liontalk.service.impl;
 
+import cn.liontalk.entity.admin.Admin;
+import cn.liontalk.mapper.AdminMapper;
 import cn.liontalk.service.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,4 +15,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AdminServiceImpl implements AdminService {
+
+
+    @Autowired
+    AdminMapper adminMapper;
+
+    @Override
+    public Admin adminLogin(String account, String password) {
+        return adminMapper.adminLogin(account,password);
+    }
 }

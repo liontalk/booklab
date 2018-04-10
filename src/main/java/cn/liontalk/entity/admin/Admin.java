@@ -1,6 +1,6 @@
 package cn.liontalk.entity.admin;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 import lombok.NonNull;
 
@@ -15,10 +15,9 @@ import java.util.Date;
  * @version: V1.0
  */
 @Data
-@Entity
 public class Admin {
 
-    @NonNull
+
     private int id;
 
     private String account;
