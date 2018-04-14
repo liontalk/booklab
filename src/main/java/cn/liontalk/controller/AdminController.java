@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  * @version: V1.0
  */
 @Controller
-@RequestMapping(value="/admin")
+@RequestMapping(value = "/admin")
 public class AdminController {
 
 
@@ -28,35 +28,55 @@ public class AdminController {
     AdminService adminService;
 
 
-    @RequestMapping(value="/index")
-    public String index(HttpSession httpSession){
-        Admin admin =(Admin) httpSession.getAttribute(GlobalConstant.ADMIN);
-        if(admin==null){
-            return "login";
+    @RequestMapping(value = "/index")
+    public String index(HttpSession httpSession) {
+        Admin admin = (Admin) httpSession.getAttribute(GlobalConstant.ADMIN);
+        if (admin == null) {
+            return "redirect:/admin/login";
         }
         return "index";
     }
 
+    @RequestMapping(value = "/login")
+    public String login(HttpSession httpSession) {
+        Admin systemManager = (Admin) httpSession.getAttribute(GlobalConstant.ADMIN);
+        if (systemManager != null) {
+            return "redirect:/admin/index";
+        }
+        return "login";
+    }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String adminLogin(HttpServletRequest request,ModelMap modelMap,HttpSession httpSession){
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String adminLogin(HttpServletRequest request, ModelMap modelMap, HttpSession httpSession) {
         String account = request.getParameter("account");
         String password = request.getParameter("password");
-        if(account==null || ("").equals(account.trim())){
-           modelMap.put("error","请输入登录账号");
+        modelMap.put("password", password);
+        modelMap.put("account", account);
+        if (account == null || ("").equals(account.trim())) {
+            modelMap.put("error", "请输入登录账号");
             return "login";
         }
-        if(password==null || ("").equals(password.trim())){
-            modelMap.put("error","请输入登录密码");
+        if (password == null || ("").equals(password.trim())) {
+            modelMap.put("error", "请输入登录密码");
             return "login";
         }
-        Admin admin = adminService.adminLogin(account,password);
-        if(admin==null){
-            modelMap.put("error","该管理员不存在");
+        Admin admin = adminService.adminLogin(account, password);
+        if (admin == null) {
+            modelMap.put("error", "该管理员不存在");
             return "login";
         }
-        httpSession.setAttribute(GlobalConstant.ADMIN,admin);
+        httpSession.setAttribute(GlobalConstant.ADMIN, admin);
         return "redirect:/admin/index";
     }
+
+
+
+    @RequestMapping(value="/logout")
+    public String loginOut(HttpSession httpSession){
+        httpSession.invalidate();
+        return "redirect:/admin/index";
+    }
+
 
 }
