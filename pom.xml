@@ -172,11 +172,20 @@
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
 
-		<!--<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper-spring-boot-starter</artifactId>
-			<version>1.1.0</version>
-		</dependency>-->
+
+		<!--springboot 支持jsp 需要依赖的jar包-->
+		<!--jsp页面使用jstl标签-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+
+		<!--用于编译jsp-->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
 
 	</dependencies>
