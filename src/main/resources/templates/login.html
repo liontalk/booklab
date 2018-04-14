@@ -11,6 +11,8 @@
     <link th:href="@{/static/css/font-awesome.css?v=4.4.0}" rel="stylesheet">
     <link th:href="@{/static/css/animate.css}" rel="stylesheet">
     <link th:href="@{/static/css/style.css}" rel="stylesheet">
+
+
     <link th:href="@{/static/css/login.css}" rel="stylesheet">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html"/>
@@ -25,17 +27,18 @@
 <body class="signin">
 <div class="signinpanel">
     <div class="row">
-        <div class="col-sm-12" th:if="${error}">
+        <!--<div class="col-sm-12" th:if="${error}">
             <div class="alert alert-danger alert-dismissable">
-                <button aria-hidden="true" data-dismiss="alert" th:value="${error}" id="errorButton" class="close" type="button">x</button>
+                <button aria-hidden="true" data-dismiss="alert"  id="errorButton" class="close" type="button">x</button><p th:value="${error}"/>
             </div>
-        </div>
+        </div>-->
         <div class="col-sm-12">
             <form th:method="post" id="loginForm" th:action="@{/admin/login}">
                 <h4 class="no-margins">登&nbsp;&nbsp;录</h4>
                 <input type="text" class="form-control uname" name="account" id="account" th:value="${account}"
                        placeholder="请输入登录账号"/>
-                <input type="password" class="form-control pword m-b" name="password" id="password"   th:value="${password}"
+                <input type="password" class="form-control pword m-b" name="password" id="password"
+                       th:value="${password}"
                        placeholder="请输入登录密码"/>
                 <a th:href="@{/}">忘记密码了？</a>
                 <button class="btn btn-success btn-block" id="send">登录</button>
@@ -51,26 +54,27 @@
     </div>
 
 </div>
-<script th:src="@{/static/js/jquery.min.js}"></script>
+<script th:src="@{/static/js/plugins/jquery/2.1.4/jquery.min.js}"></script>
 <script th:src="@{/static/js/bootstrap-table.min.js}"></script>
-<script>
+<script th:src="@{/static/js/plugins/layer/1.9.3/layer.js}"></script>
+<script th:inline="javascript">
 
+    $(function () {
 
-
-    $(function(){
-        setTimeout(function(){
-           // $("button.close").click();
-            $("#errorButton").click();
-        },3000);
+        var error = [[${error}]];
+        if (error != null && error.trim() != "") {
+            layer.msg(error, {icon: 2, time: 1500});
+            return;
+        }
     })
 
-    $(document).keyup(function(event){
-        if(event.keyCode ==13){
+    $(document).keyup(function (event) {
+        if (event.keyCode == 13) {
             $("#loginForm").submit();
         }
     });
 
-    $("#send").on("click",function(){
+    $("#send").on("click", function () {
         $("#loginForm").submit();
     });
 
