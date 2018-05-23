@@ -17,7 +17,7 @@
     </sql>
 
     <select id="adminLogin"  resultMap="Admin">
-        select <include refid="baseColumn"/>  from t_admin as u WHERE    u.status = 'A' and account =#{account} and password = #{password};
+        select <include refid="baseColumn"/>  from t_admin as u WHERE    u.status = 'AVAILABLE' and account =#{account} and password = #{password};
     </select>
 
 

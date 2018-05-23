@@ -7,25 +7,48 @@
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
         <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR"/>
     </resultMap>
 
+
+    <sql id="BaseColumn">
+        u.`id`,
+        u.`name`,
+        u.`password`,
+        u.`phone`,
+        u.`create_time`,
+        u.`update_time`,
+        u.`status`,
+        u.`avatar`,
+        u.`nick_name`
+    </sql>
+
+    <!--查询用户个人信息-->
     <select id="findUserInfo" parameterType="java.util.Map" resultType="cn.liontalk.entity.user.User">
-        select id,name  from t_user;
+        SELECT <include refid="BaseColumn"/>  FROM t_user AS u;
     </select>
+
+    <!--插入用户数据-->
     <insert id="addUserInfo" parameterType="cn.liontalk.entity.user.User">
-        insert into t_user (id, name,phone
+        INSERT INTO t_user (id, name,phone
         )
-        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}
+        VALUES (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}
         )
     </insert>
+
+    <!--删除用户-->
     <delete id="delUserInfo" parameterType="java.lang.Integer">
-        delete from t_user where id = #{id,jdbcType=INTEGER}
+        DELETE FROM t_user WHERE id = #{id,jdbcType=INTEGER}
     </delete>
 
 
     <!--查询用户列表-->
     <select id="queryUserList" resultMap="User">
-        select id,name  from t_user;
+        SELECT <include refid="BaseColumn"/>  FROM t_user AS u;
     </select>
 
 </mapper>

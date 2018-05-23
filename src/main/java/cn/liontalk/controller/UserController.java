@@ -49,7 +49,7 @@ public class UserController {
         AjaxResult ajaxResult = new AjaxResult(true);
         try{
             List<User> list = userService.queryUserList();
-
+            ajaxResult.setData(list);
 
         }catch (MyException e){
             ajaxResult.setSuccess(false);

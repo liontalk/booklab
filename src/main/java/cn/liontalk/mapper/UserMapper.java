@@ -21,8 +21,6 @@ public interface UserMapper {
      * 查询用户信息
      *
      * @param map
-     * @param map
-     * @param map
      * @return
      **/
     List <User> findUserInfo(Map <String, Object> map);
@@ -30,7 +28,6 @@ public interface UserMapper {
 
     /**
      * 添加用户信息
-     * @param user
      * @param user
      * @param
      * @return
@@ -40,8 +37,6 @@ public interface UserMapper {
     /**
     * 删除用户数据
     * @param id
-    * @param id
-    * @param id
     * @return
     **/
     int delUserInfo(int id);
@@ -49,8 +44,6 @@ public interface UserMapper {
 
     /**
     * 查询用户列表
-    * @param
-    * @param
     * @param
     * @return List <User>
     **/
