@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService {
      * @date: 2018/3/28 22:20
      **/
     @Override
-    public List <User> queryUserList() {
-        return userMapper.queryUserList();
+    public List <User> queryUserList(Map<String, Object> params) {
+        return userMapper.queryUserList(params);
     }
 
     @Override

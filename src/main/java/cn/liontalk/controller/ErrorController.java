@@ -22,9 +22,6 @@ public class ErrorController {
 
     @RequestMapping(value="/error")
     public String errorTest(){
-
-        int a  = 1/0;
-
         logger.debug("错误。。。。。。。");
         return "error/500";
 

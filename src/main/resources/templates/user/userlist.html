@@ -1,84 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用户列表</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>用户列表</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <link th:href="@{/static/css/bootstrap.min.css?v=3.3.6}" rel="stylesheet">
-    <link th:href="@{/static/css/bootstrap-table.min.css}" rel="stylesheet">
-    <link th:href="@{/static/css/table.css}" rel="stylesheet">
+    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/static/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/static/css/plugins/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet">
+    <link th:href="@{/static/css/plugins/jsTree/style.min.css}" rel="stylesheet">
+    <link th:href="@{/static/css/plugins/jqTreeGrid/jquery.treegrid.css}" rel="stylesheet">
+    <link th:href="@{/static/css/plugins/summernote/summernote-0.8.8.css}"  rel="stylesheet">
+    <link th:href="@{/static/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/static/css/plugins/chosen/chosen.css}" rel="stylesheet">
+    <link th:href="@{/static/css/style.css}"  rel="stylesheet">
+    <link th:href="@{/static/css/layui.css}" rel="stylesheet">
 </head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="span6">
-            <ul class="breadcrumb">
-                <li>
-                    <a href="#">首页</a><span class="divider">></span>
-                </li>
-                <li>
-                    <a href="#">耳机页面</a><span class="divider">></span>
-                </li>
-                <li class="active">
-                    详细页面
-                </li>
-            </ul>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-body">
+                <div class="fixed-table-toolbar">
+                    <div class="columns pull-left">
+                        <button  type="button" class="btn  btn-primary"
+                                 onclick="add()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>添加
+                        </button>
+                        <button  type="button" class="btn  btn-danger"
+                                 onclick="batchRemove()">
+                            <i class="fa fa-trash" aria-hidden="true"></i>删除
+                        </button>
+                    </div>
+                    <div class="columns pull-right">
+                        <button class="btn btn-success" onclick="reLoad()">查询</button>
+                    </div>
+                    <div class="columns pull-right col-md-2 nopadding">
+                        <input id="searchName" type="text" class="form-control"
+                               placeholder="">
+                    </div>
+                </div>
+                <table id="exampleTable" data-mobile-responsive="true">
+                </table>
+            </div>
         </div>
     </div>
-    <table id="table" data-toggle="table">
-        <thead>
-        <tr>
-            <th data-field="name">姓名</th>
-            <th data-field="age">年龄</th>
-            <th data-field="height">身高</th>
-            <th data-field="description">描述</th>
-            <th class="text-left" data-field="action" data-formatter="actionFormatter" data-events="actionEvents">操作</th>
-        </tr>
-        </thead>
-    </table>
 </div>
 <script th:src="@{/static/js/jquery.min.js}"></script>
-<script th:src="@{/static/js/bootstrap-table.js}"></script>
-<script th:src="@{/static/js/bootstrap-table.min.js}"></script>
-<script th:src="@{/static/js/bootstrap-table-mobile.min.js}"></script>
-<script th:src="@{/static/js/bootstrap-table-zh-CN.min.js}"></script>
-<script>
-    $(function(){
-        var data = [
-            {uid : "7791", name : "keenleung1", age : "26", height : "165", description : "描述"},
-            {uid : "7792", name : "keenleung2", age : "26", height : "165", description : "描述"},
-            {uid : "7793", name : "keenleung3", age : "26", height : "165", description : "描述"},
-            {uid : "7794", name : "keenleung4", age : "26", height : "165", description : "描述"},
-            {uid : "7795", name : "keenleung5", age : "26", height : "165", description : "描述"},
-        ];
-        $('#table').bootstrapTable('load', data);
-        var $result = $('#eventsResult');
-
-        // 选择一行
-        $('#table').on('click-row.bs.table', function (e, row, $element) {
-            alert(JSON.stringify(row.uid));
-        });
-    });
-
-    function actionFormatter(value, row, index) {
-        return [
-            "<button class='btn btn-primary like'>选取</button>",
-            "<button class='btn btn-default unlike'>取消</button>",
-        ].join('');
-    }
-
-    window.actionEvents = {
-        'click .like': function (e, value, row, index) {
-            alert(JSON.stringify(row));
-            return false;
-        },
-        'click .unlike': function (e, value, row, index) {
-            alert("unlike click");
-            return false;
-        },
-    };
-</script>
+<script th:src="@{/static/js/bootstrap.min.js}"></script>
+<script th:src="@{/static/js/plugins/bootstrap-table/bootstrap-table.min.js}"></script>
+<script th:src="@{/static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js}"></script>
+<script th:src="@{/static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+<script th:src="@{/static/js/plugins/validate/jquery.validate.min.js}"></script>
+<script th:src="@{/static/js/plugins/validate/messages_zh.min.js}"></script>
+<script th:src="@{/static/js/plugins/jsTree/jstree.min.js}"></script>
+<script th:src="@{/static/js/plugins/jqTreeGrid/jquery.treegrid.min.js}"></script>
+<script th:src="@{/static/js/plugins/jqTreeGrid/jquery.treegrid.extension.js}"></script>
+<script th:src="@{/static/js/plugins/jqTreeGrid/jquery.treegrid.bootstrap3.js}"></script>
+<script th:src="@{/static/js/plugins/chosen/chosen.jquery.js}"></script>
+<script th:src="@{/static/js/plugins/layer/layer.js}"></script>
+<script th:src="@{/static/js/content.js}"></script>
+<script th:src="@{/static/js/plugins/summernote/summernote.js}"></script>
+<script th:src="@{/static/js/plugins/summernote/summernote-zh-CN.min.js}"></script>
+<script th:src="@{/static/js/ajax-util.js}"></script>
+<script th:src="@{/static/js/appjs/blog/bContent/bContent.js}"></script>
 </body>
 </html>

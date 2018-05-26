@@ -29,7 +29,10 @@
 
     <!--查询用户个人信息-->
     <select id="findUserInfo" parameterType="java.util.Map" resultType="cn.liontalk.entity.user.User">
-        SELECT <include refid="BaseColumn"/>  FROM t_user AS u;
+        SELECT <include refid="BaseColumn"/>  FROM t_user AS u
+        <if test="offset != null and limit != null">
+            limit ${offset}, ${limit}
+        </if>
     </select>
 
     <!--插入用户数据-->

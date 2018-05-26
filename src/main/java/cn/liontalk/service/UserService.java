@@ -32,7 +32,7 @@ public interface UserService {
      * @param
      * @return
      **/
-     List<User> queryUserList();
+     List<User> queryUserList(Map<String, Object> params);
 
 
      /**

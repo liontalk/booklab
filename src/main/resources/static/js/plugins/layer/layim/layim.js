@@ -1,7 +1,7 @@
 /*
 
  @Name: layui WebIM 1.0.0
- @Author：贤心
+ @author 郑保乐
  @Date: 2014-04-25
  @Blog: http://sentsin.com
 

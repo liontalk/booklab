@@ -5,15 +5,14 @@ import cn.liontalk.service.UserService;
 import cn.liontalk.util.ajaxresult.AjaxResult;
 import cn.liontalk.util.exception.MyException;
 import cn.liontalk.util.plugins.PageView;
+import cn.liontalk.util.plugins.PageWrapper;
+import cn.liontalk.util.plugins.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -45,17 +44,17 @@ public class UserController {
 
     @RequestMapping(value="/queryUserList",method = RequestMethod.GET)
     @ResponseBody
-    public AjaxResult queryUserList(){
-        AjaxResult ajaxResult = new AjaxResult(true);
-        try{
-            List<User> list = userService.queryUserList();
-            ajaxResult.setData(list);
-
-        }catch (MyException e){
-            ajaxResult.setSuccess(false);
-            ajaxResult.setMessage(e.getMessage());
+    public PageWrapper queryUserList(@RequestParam Map<String, Object> params){
+        int total = 0;
+        Query query = new Query(params);
+        List<User> list = userService.queryUserList(query);
+        if(list!=null){
+            total = list.size();
         }
-        return ajaxResult;
+        PageWrapper pageWrapper = new PageWrapper(list, total);
+        return pageWrapper;
+
+
     }
 
 
@@ -68,11 +67,6 @@ public class UserController {
 
 
 
-    @RequestMapping(value = "/error")
-    public String toError(){
-
-        return "error/500";
-    }
 
 
 }

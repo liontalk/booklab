@@ -47,6 +47,6 @@ public interface UserMapper {
     * @param
     * @return List <User>
     **/
-    List <User> queryUserList();
+    List <User> queryUserList(Map<String, Object> params);
     
 }
