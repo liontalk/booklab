@@ -48,5 +48,11 @@ public interface UserMapper {
     * @return List <User>
     **/
     List <User> queryUserList(Map<String, Object> params);
-    
+
+
+    /**
+     * 查询用户数量
+     */
+
+    int getQueryCount(Map<String, Object> params);
 }

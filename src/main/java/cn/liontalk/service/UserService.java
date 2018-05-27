@@ -36,6 +36,17 @@ public interface UserService {
 
 
      /**
+      * 查询用户数量
+      *
+      * @param
+      * @param
+      * @param
+      * @return
+      **/
+     int  getQueryCount(Map<String, Object> params);
+
+
+     /**
      * 添加用户信息
      *
      * @param user

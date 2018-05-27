@@ -48,9 +48,7 @@ public class UserController {
         int total = 0;
         Query query = new Query(params);
         List<User> list = userService.queryUserList(query);
-        if(list!=null){
-            total = list.size();
-        }
+        total  = userService.getQueryCount(query);
         PageWrapper pageWrapper = new PageWrapper(list, total);
         return pageWrapper;
     }

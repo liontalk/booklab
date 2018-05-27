@@ -45,6 +45,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int getQueryCount(Map<String, Object> params) {
+        return userMapper.getQueryCount(params);
+    }
+
+    @Override
     public int addUserInfo(User user) {
         return userMapper.addUserInfo(user);
     }

@@ -35,6 +35,22 @@
         </if>
     </select>
 
+    <!--插叙用户的数据-->
+    <select id="getQueryCount" parameterType="java.util.Map" resultType="int">
+        SELECT count(*) FROM  t_user as u
+        <where>
+            <if test="password != null and password != ''"> and password = #{password} </if>
+            <if test="name != null and name != ''"> and name = #{name} </if>
+            <if test="password != null and password != ''"> and password = #{password} </if>
+            <if test="phone != null and phone != ''"> and phone = #{phone} </if>
+            <if test="status != null and status != ''"> and status = #{status} </if>
+            <if test="avatar != null and avatar != ''"> and avatar = #{avatar} </if>
+            <if test="nick_name != null and nick_name != ''"> and nick_name = #{nick_name} </if>
+            <if test="create_time != null and create_time != ''"> and create_time <![CDATA[>=]]]> #{startTime} and create_time <![CDATA[<=]]]> #{endTime} </if>
+            <if test="update_time != null and update_time != ''"> and update_time = #{update_time} </if>
+        </where>
+    </select>
+
     <!--插入用户数据-->
     <insert id="addUserInfo" parameterType="cn.liontalk.entity.user.User">
         INSERT INTO t_user (id, name,phone
