@@ -30,8 +30,8 @@
     <!--查询用户个人信息-->
     <select id="findUserInfo" parameterType="java.util.Map" resultType="cn.liontalk.entity.user.User">
         SELECT <include refid="BaseColumn"/>  FROM t_user AS u
-        <if test="offset != null and limit != null">
-            limit ${offset}, ${limit}
+        <if test="offset != null and offset!='' and limit!='' and limit != null">
+            limit #{offset}, #{limit}
         </if>
     </select>
 
@@ -50,8 +50,11 @@
 
 
     <!--查询用户列表-->
-    <select id="queryUserList" resultMap="User">
-        SELECT <include refid="BaseColumn"/>  FROM t_user AS u;
+    <select id="queryUserList" parameterType="java.util.Map" resultMap="User">
+        SELECT <include refid="BaseColumn"/>  FROM t_user AS u
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
     </select>
 
 </mapper>

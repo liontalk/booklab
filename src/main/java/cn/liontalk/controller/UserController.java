@@ -53,8 +53,6 @@ public class UserController {
         }
         PageWrapper pageWrapper = new PageWrapper(list, total);
         return pageWrapper;
-
-
     }
 
 
